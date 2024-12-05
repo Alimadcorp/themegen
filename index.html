@@ -1,0 +1,70 @@
+<!DOCTYPE Html>
+<html lang=en>
+<head>
+<link rel=stylesheet href=style.css>
+<meta charset=utf-8>
+<meta property=og:title content="Random Theme Generator">
+<meta property=og:description content="A great way to get a theme for your jam if your brain is not braining. Created by Alimad Co.">
+<meta property=og:image content=https://ahrefs.com/blog/wp-content/uploads/2019/12/fb-how-to-become-an-seo-expert.png>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel=stylesheet>
+</head>
+<body>
+<center>
+<h1>Random Theme Generator</h1>
+<p>
+v0.1 by Alimad Co
+</p>
+<br><br><br>
+<p class="title title-solo" id=title> </p>
+<br>
+<div style=display:flex>
+<button id=gen onclick=generate()>Generate</button>
+<button id=copyButton aria-label=Copy>
+<svg xmlns=http://www.w3.org/2000/svg width=24 height=24 fill=none viewbox="0 0 24 24" stroke=currentColor stroke-width=2>
+<rect x=9 y=9 width=13 height=13 rx=2 ry=2></rect>
+<path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+</svg>
+</button>
+</div>
+<br><br>
+<label for=themelist>Choose a list:</label>
+<div style=display:flex;align-items:center>
+<select name=themelist id=themelist>
+<option value=all>All Lists</option>
+<option value=gunnar>Gunnar Clovis' List</option>
+<option value=entry>Let's Make a Game.net</option>
+<option value=banau7>Banau7's List</option>
+<option value=cjanssen>Cjanssen's List</option>
+</select>
+<button id=editListButton aria-label="Custom List" style=display:none>
+<svg xmlns=http://www.w3.org/2000/svg width=20 height=20 fill=none viewbox="0 0 24 24" stroke=currentColor stroke-width=2>
+<path d="M12 20h9"></path>
+<path d="M16.5 3.5a2.121 2.121 0 113 3l-9 9-4 1 1-4 9-9z"></path>
+</svg>
+</button>
+<button id=addListButton style="padding:8px 8px"> + </button>
+</div>
+<div id=popup class=popup>
+<div class=popup-content>
+<label for=fileName>Create New List</label>
+<input id=fileName placeholder="Enter list name">
+<textarea id=customListInput placeholder="Enter your list, each item on a new line. Example:
+Banana
+Apple
+Microsoft"></textarea>
+<div style=display:flex;justify-content:space-between>
+<button id=uploadButton>Upload List</button>
+<button id=saveButton>Save List</button>
+<button id=downloadButton>Download List</button>
+<button id=deleteButton>Delete List</button>
+</div>
+<button id=closePopup>Close</button>
+</div>
+</div>
+<p id=n>Total List Size: 382,705</p>
+</center>
+<script src=list.js></script>
+<script src=entrypoint.js></script>
+<script src=sketch.js></script>
+</body>
+</html>
