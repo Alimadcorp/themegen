@@ -23,14 +23,12 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  font-size: 1.2rem; /* Increased base font size */
 }
 
 #gen, button, select {
   font-family: Ubuntu, sans-serif;
-}
-
-body, button, h1, p, select {
-  /* Removed transition property to prevent lag */
+  font-size: 1.2rem; /* Larger button text */
 }
 
 #copyButton, #gen, button {
@@ -43,19 +41,20 @@ body, button, h1, p, select {
 h1 {
   color: #248;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, .1);
+  font-size: 2.5rem; /* Larger heading */
 }
 
 p {
   color: #448;
-  font-size: .8rem;
+  font-size: 1rem; /* Slightly larger paragraph text */
 }
 
 #fileName, #gen, button, select {
-  font-size: 1rem;
+  font-size: 1.2rem; /* Unified size for input and buttons */
 }
 
 .title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #136;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
   margin: 20px 0;
@@ -68,49 +67,39 @@ p {
   display: inline-block;
   width: 90%;
   max-width: 300px;
-  margin: 0 auto;
   padding: 10px;
   box-sizing: border-box;
-  height: auto;
-  font-size: clamp(16px, 5vw, 24px);
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 button {
-  padding: 5px;
+  padding: 10px; /* Slightly larger padding for bigger buttons */
   border-radius: 8px;
 }
 
 #gen {
-  padding: 12px 24px;
+  padding: 15px 30px; /* Increased padding for larger buttons */
   border-radius: 8px;
 }
 
 #copyButton {
   background: linear-gradient(135deg, #4c4, #8f8);
   border: none;
-  padding: 10px;
+  padding: 12px; /* Larger padding for consistency */
   border-radius: 50%;
   align-items: center;
   justify-content: center;
 }
 
 #copyButton svg {
-  width: 20px;
-  height: 20px;
+  width: 25px; /* Larger icon size */
+  height: 25px;
   stroke: white;
 }
 
-button:hover {
-  box-shadow: 4px 6px 12px rgba(0, 0, 0, .3);
-}
-
-button:active {
-  transform: scale(.95);
-}
-
 select {
-  padding: 8px 16px;
+  padding: 10px 20px; /* Larger padding for select box */
+  font-size: 1.2rem; /* Larger select text */
   border: 2px solid #48f;
   border-radius: 8px;
   background: #fff;
@@ -118,15 +107,6 @@ select {
   cursor: pointer;
   appearance: none;
   outline: 0;
-}
-
-select:hover {
-  border-color: #5cf;
-}
-
-select:focus {
-  border-color: #25a;
-  box-shadow: 0 0 6px #5cf;
 }
 
 center {
@@ -142,7 +122,7 @@ center {
   transform: translate(-50%, -50%);
   background: #ffffffaa;
   border: 2px solid #48f;
-  padding: 20px;
+  padding: 30px; /* Increased popup padding */
   border-radius: 8px;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
@@ -153,21 +133,21 @@ center {
 .popup-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Increased spacing for popup content */
 }
 
 #customListInput {
   width: 100%;
-  height: 200px;
-  padding: 10px;
+  height: 250px; /* Increased height for input box */
+  padding: 15px; /* Larger padding */
   font-family: Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem; /* Larger font for input */
   border: 2px solid #48f;
   border-radius: 8px;
 }
 
 #fileName {
-  padding: 10px;
+  padding: 12px; /* Larger padding */
   width: 100%;
   border: 2px solid #48f;
   border-radius: 8px;
