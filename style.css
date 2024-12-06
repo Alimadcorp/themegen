@@ -46,12 +46,7 @@ h1 {
 
 p {
   color: #448;
-  font-size: 1rem; /* Slightly larger paragraph text */
-}
-
-#fileName, #gen, button, select {
-  font-size: 1.2rem; /* Unified size for input and buttons */
-}
+ } 
 
 .title {
   font-size: 2rem;
@@ -120,7 +115,7 @@ center {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ffffffaa;
+  background: #ffffff88;
   border: 2px solid #48f;
   padding: 30px; /* Increased popup padding */
   border-radius: 8px;
