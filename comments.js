@@ -123,4 +123,4 @@ document.getElementById("sub").addEventListener("click", () => {
   }
 });
 
-fetchComments();
+document.addEventListener("DOMContentLoaded", () => {fetchComments()}) ;
