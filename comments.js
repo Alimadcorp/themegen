@@ -44,16 +44,15 @@ async function addComment(commentText) {
 
 // Fetch and display comments
 function fetchComments() {
-  const commentsRef = collection(db, "comments");
-  const commentsQuery = query(commentsRef, orderBy("timestamp")); // Order by timestamp
-  onSnapshot(commentsQuery, (snapshot) => {
+  const commentsRef = query(collection(db, "comments"), orderBy("timestamp"));
+  onSnapshot(commentsRef, (snapshot) => {
     commentsList.innerHTML = ""; // Clear previous comments
     snapshot.forEach((doc) => {
       const commentData = doc.data();
       const commentElement = document.createElement("div");
       commentElement.classList.add("comment");
 
-      // Get the timestamp and format it
+      // Get the timestamp and format it dynamically
       const timestamp = commentData.timestamp
         ? commentData.timestamp.toDate()
         : new Date();
@@ -70,19 +69,39 @@ function fetchComments() {
   });
 }
 
-// Function to format the timestamp to HH:MM
+// Function to format the timestamp dynamically
 function formatTimestamp(timestamp) {
-  const hours = timestamp.getHours().toString().padStart(2, "0");
-  const minutes = timestamp.getMinutes().toString().padStart(2, "0");
-  return `${hours}:${minutes}`;
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // Start of today
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1); // Start of yesterday
+
+  if (timestamp >= today) {
+    // If the comment was posted today, show HH:MM
+    return timestamp.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } else if (timestamp >= yesterday) {
+    // If the comment was posted yesterday, show "Yesterday"
+    return "Yesterday";
+  } else {
+    // Otherwise, show DD MMM YYYY
+    return timestamp.toLocaleDateString("en-US", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  }
 }
 
-// Handle submit button click
-document.getElementById("sub").addEventListener("click", () => {
+// Event listener for the form submission
+feedbackForm.addEventListener("submit", (event) => {
+  event.preventDefault();
   const commentText = commentTextarea.value;
   if (commentText) {
     addComment(commentText);
-    commentTextarea.value = "";
+    commentTextarea.value = ""; // Clear the textarea
   }
 });
 
