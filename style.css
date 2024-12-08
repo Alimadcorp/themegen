@@ -175,6 +175,22 @@ center {
 #backButton:active {
   transform: scale(0.95);
 }
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #fff3; 
+}
+::-webkit-scrollbar-thumb {
+  background: #8888;
+  border-radius:3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5558; 
+}
+/* Other styles */
 @media (orientation: landscape) {
   .feedback-container {
     background-color: rgba(255, 255, 255, 0.05);
@@ -185,13 +201,31 @@ center {
     position: fixed;
     bottom: 1rem;
     left: 1rem;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     z-index: 9999;
+    max-height: 90%;
   }
 }
+
 @media (orientation: portrait) {
   .feedback-container {
-    display:none;
+    position: static; /* Let it flow with the page */
+    margin-top: 1.5rem; /* Space between buttons and comments */
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 9999;
+    max-height: 90%;
+  }
+  #sub {
+    margin: 1rem 0; /* Adjust spacing */
   }
 }
 
@@ -224,17 +258,38 @@ textarea {
 
 #comments-section {
   margin-top: 1.5rem;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
+.comment-time {
+  font-size: 0.6rem;
+  color: #888;
+}
 .comment {
+  position: relative;
+  overflow: auto;
   background-color: #f9f9f966;
-  padding: 1rem;
+  backdrop-filter: blur(5px);
+  padding: 0.1rem;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.1rem;
   border: 1px solid #ddd;
 }
+#sub {
+  margin: 0.5rem auto; /* Center horizontally */
+  display: block; /* Make it a block element */
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+  width: 80%; /* Adjust width as needed */
+  color: #fff;
+  background-color: #222a;
+  padding: 6px;
+  cursor: pointer;
+}
+
 
 .comment p {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
