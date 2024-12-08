@@ -2,10 +2,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
 import {
   getFirestore,
   collection,
-  addDoc,
   query,
   orderBy,
   onSnapshot,
+  addDoc,
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
@@ -29,6 +29,9 @@ const feedbackForm = document.getElementById("feedbackForm");
 const commentTextarea = document.getElementById("comment");
 const commentsList = document.getElementById("comments-list");
 
+// Array to store loaded comments
+let commentsArray = [];
+
 // Function to add a comment to Firestore
 async function addComment(commentText) {
   try {
@@ -42,56 +45,73 @@ async function addComment(commentText) {
   }
 }
 
-// Fetch and display comments
+// Fetch comments from Firestore
 function fetchComments() {
   const commentsRef = query(collection(db, "comments"), orderBy("timestamp"));
   onSnapshot(commentsRef, (snapshot) => {
-    commentsList.innerHTML = ""; // Clear previous comments
+    commentsArray = []; // Clear previous comments
     snapshot.forEach((doc) => {
       const commentData = doc.data();
-      const commentElement = document.createElement("div");
-      commentElement.classList.add("comment");
-
-      // Get the timestamp and format it dynamically
-      const timestamp = commentData.timestamp
-        ? commentData.timestamp.toDate()
-        : new Date();
-      const formattedTime = formatTimestamp(timestamp);
-
-      // Add the comment text and timestamp
-      commentElement.innerHTML = `
-        <p>${commentData.text}</p>
-        <div class="comment-time">${formattedTime}</div>
-      `;
-
-      commentsList.appendChild(commentElement);
+      commentData.id = doc.id; // Add document ID for uniqueness
+      commentsArray.push(commentData); // Push to the comments array
     });
+
+    // Display comments one by one with a delay
+    displayCommentsWithDelay();
   });
 }
 
 // Function to format the timestamp dynamically
-function formatTimestamp(timestamp) {
+function formatTimeAgo(timestamp) {
   const now = new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // Start of today
-  const yesterday = new Date(today);
-  yesterday.setDate(today.getDate() - 1); // Start of yesterday
+  const diffInSeconds = Math.floor((now - timestamp) / 1000);
 
-  if (timestamp >= today) {
-    // If the comment was posted today, show HH:MM
-    return timestamp.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  } else if (timestamp >= yesterday) {
-    // If the comment was posted yesterday, show "Yesterday"
-    return "Yesterday";
-  } else {
-    // Otherwise, show DD MMM YYYY
-    return timestamp.toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    });
+  if (diffInSeconds < 60) {
+    return diffInSeconds === 0 ? "Just now" : `${diffInSeconds} seconds ago`;
+  }
+
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  if (diffInMinutes < 60) {
+    return `${diffInMinutes} minutes ago`;
+  }
+
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) {
+    return `${diffInHours} hours ago`;
+  }
+
+  const diffInDays = Math.floor(diffInHours / 24);
+  if (diffInDays <= 14) {
+    return `${diffInDays} days ago`;
+  }
+
+  // Return exact date if more than 14 days ago
+  return timestamp.toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+// Async function to display comments with a delay
+async function displayCommentsWithDelay() {
+  commentsList.innerHTML = ""; // Clear the list
+
+  for (const comment of commentsArray) {
+    await new Promise((resolve) => setTimeout(resolve, 50)); // 50ms delay
+    const timestamp = comment.timestamp
+      ? comment.timestamp.toDate()
+      : new Date();
+    const timeAgo = formatTimeAgo(timestamp);
+
+    const commentElement = document.createElement("div");
+    commentElement.classList.add("comment");
+    commentElement.innerHTML = `
+      <p>${comment.text}</p>
+      <div class="comment-time">${timeAgo}</div>
+    `;
+
+    commentsList.appendChild(commentElement);
   }
 }
 
