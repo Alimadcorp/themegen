@@ -1,86 +1,96 @@
 <!DOCTYPE Html>
-<html lang=en>
+<html lang="en">
 <head>
-<meta charset=utf-8>
-<meta property=og:title content="Random Theme Generator">
-<meta property=og:description content="A great way to get a theme for your jam if your brain is not braining. Created by Alimad Co.">
-<meta property=og:image content="https://img.itch.zone/aW1nLzE4ODYxMDgxLnBuZw==/original/R%2Bwajn.png">
-<link rel=icon href="https://img.itch.zone/aW1nLzE4ODYxMTAyLnBuZw==/original/UG8QHB.png">
-<link rel=stylesheet href=style.css>
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel=stylesheet>
+  <meta charset="utf-8">
+  <meta property="og:title" content="Random Theme Generator">
+  <meta property="og:description" content="A great way to get a theme for your jam if your brain is not braining. Created by Alimad Co.">
+  <meta property="og:image" content="https://img.itch.zone/aW1nLzE4ODYxMDgxLnBuZw==/original/R%2Bwajn.png">
+  <link rel="icon" href="https://img.itch.zone/aW1nLzE4ODYxMTAyLnBuZw==/original/UG8QHB.png">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<div style="transform:scale(1.7)">
-<center>
-<h1>Random Theme Generator</h1>
-<p>
-v1.3 by Alimad Co
-</p>
-<br><br><br>
-<p class="title title-solo" id=title> </p>
-<br>
-<div style=display:flex>
-<button id=gen onclick=generate()>Generate</button>
-<button id=copyButton aria-label=Copy>
-<svg xmlns=http://www.w3.org/2000/svg width=24 height=24 fill=none viewbox="0 0 24 24" stroke=currentColor stroke-width=2>
-<rect x=9 y=9 width=13 height=13 rx=2 ry=2></rect>
-<path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
-</svg>
-</button>
-</div>
-<br><br>
-<label for=themelist>Choose a list:</label>
-<div style=display:flex;align-items:center>
-<select name=themelist id=themelist>
-<option value=all>All Lists</option>
-<option value=gunnar>Gunnar Clovis' List</option>
-<option value=entry>Let's Make a Game.net</option>
-<option value=banau7>Banau7's List</option>
-<option value=cjanssen>Cjanssen's List</option>
-</select>
-<button id=editListButton aria-label="Custom List" style=display:none>
-<svg xmlns=http://www.w3.org/2000/svg width=20 height=20 fill=none viewbox="0 0 24 24" stroke=currentColor stroke-width=2>
-<path d="M12 20h9"></path>
-<path d="M16.5 3.5a2.121 2.121 0 113 3l-9 9-4 1 1-4 9-9z"></path>
-</svg>
-</button>
-<button id=addListButton style="padding:8px 8px"> + </button>
-</div>
-<div id=popup class=popup>
-<div class=popup-content>
-<label for=fileName>Create New List</label>
-<input id=fileName placeholder="Enter list name">
-<textarea id=customListInput placeholder="Enter your list, each item on a new line. Example:
+  <div style="transform:scale(1)">
+    <center>
+      <h1>Random Theme Generator</h1>
+      <p>
+        v1.3 by Alimad Co
+      </p>
+      <br><br><br>
+      <p class="title title-solo" id="title"> </p>
+      <br>
+      <div style="display:flex">
+        <button id="gen" onclick="generate()">Generate</button>
+        <button id="copyButton" aria-label="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <br><br>
+      <label for="themelist">Choose a list:</label>
+      <div style="display:flex;align-items:center">
+        <select name="themelist" id="themelist">
+          <option value="all">All Lists</option>
+          <option value="gunnar">Gunnar Clovis' List</option>
+          <option value="entry">Let's Make a Game.net</option>
+          <option value="banau7">Banau7's List</option>
+          <option value="cjanssen">Cjanssen's List</option>
+        </select>
+        <button id="editListButton" aria-label="Custom List" style="display:none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 113 3l-9 9-4 1 1-4 9-9z"></path>
+          </svg>
+        </button>
+        <button id="addListButton" style="padding:8px 8px"> + </button>
+      </div>
+      <div id="popup" class="popup">
+        <div class="popup-content">
+          <label for="fileName">Create New List</label>
+          <input id="fileName" placeholder="Enter list name">
+          <textarea id="customListInput" placeholder="Enter your list, each item on a new line. Example:
 Banana
 Apple
 Microsoft"></textarea>
-<div style=display:flex;justify-content:space-between>
-<button id=uploadButton>Upload List</button>
-<button id=saveButton>Save List</button>
-<button id=downloadButton>Download List</button>
-<button id=deleteButton>Delete List</button>
-</div>
-<button id=closePopup>Close</button>
-</div>
-</div>
-<p id=n>Total Default List Size: 382,705</p>
-<a id="creditsLink" href="#"><strong>Credits</strong></a>
+          <div style="display:flex;justify-content:space-between">
+            <button id="uploadButton">Upload List</button>
+            <button id="saveButton">Save List</button>
+            <button id="downloadButton">Download List</button>
+            <button id="deleteButton">Delete List</button>
+          </div>
+          <button id="closePopup">Close</button>
+        </div>
+      </div>
+      <p id="n">Total Default List Size: 382,705</p>
+      <a id="creditsLink" href="#"><strong>Credits</strong></a>
 
-<div id="creditsPopup" class="popup">
-  <div class="popup-content">
-    <h2>Credits</h2>
-    <p>Made by <a href="https://alimadcorp.github.io/site/social.html">Muhammad Ali</a></p>
-    <p>379,563 Themes list by <a href="https://letsmakeagame.net/game-jam-theme-generator/">LetsMakeAGame.net</a></p>
-    <p>~5000 Themes list by <a href="https://gunnar-clovis.itch.io/game-jam-theme-generator">Gunnar Clovis</a></p>
-    <p>1,020 Themes list by <a href="https://gist.github.com/bananu7/9252503">Banau7</a></p>
-    <p>2000 Themes list by <a href="https://cjanssen.bitbucket.io/themegen/ ">Cjanssen</a></p>
-    <button id="backButton">Back</button>
+      <div id="creditsPopup" class="popup">
+        <div class="popup-content">
+          <h2>Credits</h2>
+          <p>Made by <a href="https://alimadcorp.github.io/site/social.html">Muhammad Ali</a></p>
+          <p>379,563 Themes list by <a href="https://letsmakeagame.net/game-jam-theme-generator/">LetsMakeAGame.net</a></p>
+          <p>~5000 Themes list by <a href="https://gunnar-clovis.itch.io/game-jam-theme-generator">Gunnar Clovis</a></p>
+          <p>1,020 Themes list by <a href="https://gist.github.com/bananu7/9252503">Banau7</a></p>
+          <p>2000 Themes list by <a href="https://cjanssen.bitbucket.io/themegen/">Cjanssen</a></p>
+          <button id="backButton">Back</button>
+        </div>
+      </div>
+    </center>
   </div>
-</div>
-</center>
-<script src=list.js></script>
-<script src=entrypoint.js></script>
-<script src=sketch.js></script>
-</div>
+  <div class="feedback-container">
+        <div id="comments-section">
+            <div id="comments-list"></div>
+        </div><h1>Leave a Comment</h1>
+        <form id="feedbackForm">
+            <textarea id="comment" placeholder="Write your comment here..." required></textarea>
+        </form>
+    </div>
+  <script src="list.js"></script>
+  <script src="entrypoint.js"></script>
+  <script type="module" src="comments.js"></script>
+  <script src="sketch.js"></script>
 </body>
 </html>

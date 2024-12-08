@@ -1,13 +1,3 @@
-#gen, button {
-  background: linear-gradient(135deg, #48f, #5cf);
-  border: none;
-  font-weight: 600;
-}
-
-#copyButton, body, center {
-  display: flex;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -23,78 +13,81 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-size: 1.2rem; /* Increased base font size */
+  font-size: 1rem; /* Base font size (rem) */
 }
 
-#gen, button, select {
+#gen,
+button,
+select {
   font-family: Ubuntu, sans-serif;
-  font-size: 1.2rem; /* Larger button text */
+  font-size: 1rem; /* Consistent font size for buttons/select */
 }
 
-#copyButton, #gen, button {
-  margin: 10px;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, .2);
+#copyButton,
+#gen,
+button {
+  margin: 0.5rem;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
   color: #fff;
+  background-color: #222a;
   cursor: pointer;
 }
 
 h1 {
   color: #248;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, .1);
-  font-size: 2.5rem; /* Larger heading */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 2.2rem; /* Adjusted heading size */
 }
 
 p {
   color: #448;
- } 
+}
 
 .title {
   font-size: 2rem;
   color: #136;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
-  margin: 20px 0;
-  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  white-space: normal;
-  word-wrap: break-word;
   text-align: center;
-  overflow: hidden;
-  display: inline-block;
   width: 90%;
-  max-width: 300px;
-  padding: 10px;
+  max-width: 25rem; /* Responsive max-width */
+  padding: 1rem;
   box-sizing: border-box;
   line-height: 1.6;
 }
 
 button {
-  padding: 10px; /* Slightly larger padding for bigger buttons */
+  padding: 0.8rem 1.5rem; /* Adjusted padding for consistency */
   border-radius: 8px;
 }
 
 #gen {
-  padding: 15px 30px; /* Increased padding for larger buttons */
+  padding: 1rem 2rem;
   border-radius: 8px;
 }
 
 #copyButton {
   background: linear-gradient(135deg, #4c4, #8f8);
   border: none;
-  padding: 12px; /* Larger padding for consistency */
+  padding: 0.75rem;
   border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #copyButton svg {
-  width: 25px; /* Larger icon size */
-  height: 25px;
+  width: 2rem;
+  height: 2rem;
   stroke: white;
 }
 
 select {
-  padding: 10px 20px; /* Larger padding for select box */
-  font-size: 1.2rem; /* Larger select text */
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
   border: 2px solid #48f;
   border-radius: 8px;
   background: #fff;
@@ -105,6 +98,7 @@ select {
 }
 
 center {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -117,10 +111,10 @@ center {
   transform: translate(-50%, -50%);
   background: #ffffff88;
   border: 2px solid #48f;
-  padding: 30px; /* Increased popup padding */
+  padding: 2rem;
   border-radius: 8px;
   backdrop-filter: blur(5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   display: none;
   z-index: 1000;
 }
@@ -128,31 +122,31 @@ center {
 .popup-content {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Increased spacing for popup content */
+  gap: 1rem;
+  text-align: center;
 }
 
 #customListInput {
   width: 100%;
-  height: 250px; /* Increased height for input box */
-  padding: 15px; /* Larger padding */
-  font-family: Arial, sans-serif;
-  font-size: 1.2rem; /* Larger font for input */
+  height: 15rem; /* Adjusted height */
+  padding: 1rem;
+  font-size: 1rem;
   border: 2px solid #48f;
   border-radius: 8px;
 }
 
 #fileName {
-  padding: 12px; /* Larger padding */
+  padding: 1rem;
   width: 100%;
   border: 2px solid #48f;
   border-radius: 8px;
 }
-/* Credits Link Style */
+
 #creditsLink {
   color: #136;
   text-decoration: none;
-  font-size: 1.2rem;
-  margin-top: 20px;
+  font-size: 1rem;
+  margin-top: 1.5rem;
   cursor: pointer;
   text-align: center;
   display: inline-block;
@@ -163,44 +157,84 @@ center {
   text-decoration: underline;
 }
 
-/* Popup Style */
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ffffffaa;
-  border: 2px solid #48f;
-  padding: 20px;
-  border-radius: 8px;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
-  display: none; /* Initially hidden */
-  z-index: 1000;
-}
-
-.popup-content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: center;
-}
-
 #backButton {
   background: linear-gradient(135deg, #48f, #5cf);
   border: none;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   border-radius: 8px;
   font-size: 1rem;
   color: #fff;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 1.5rem;
 }
 
 #backButton:hover {
-  box-shadow: 4px 6px 12px rgba(0, 0, 0, .3);
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 #backButton:active {
   transform: scale(0.95);
+}
+@media (orientation: landscape) {
+  .feedback-container {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 25%; /* Adjusted width */
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    overflow: hidden;
+    z-index: 9999;
+  }
+}
+@media (orientation: portrait) {
+  .feedback-container {
+    display:none;
+  }
+}
+
+.feedback-container h1,
+.feedback-container h2 {
+  color: #333;
+  text-align: center;
+  font-size: 1rem; /* Increased size for readability */
+}
+
+textarea {
+  width: 100%;
+  height: 5rem; /* Adjusted height */
+  padding: 1rem;
+  border-radius: 5px;
+  resize: none;
+  font-size: 1rem;
+}
+
+.feedback-container button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 80%;
+}
+
+#comments-section {
+  margin-top: 1.5rem;
+}
+
+.comment {
+  background-color: #f9f9f966;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+}
+
+.comment p {
+  margin: 0;
+  font-size: 1rem;
 }
