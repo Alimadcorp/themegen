@@ -3,7 +3,8 @@ import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
+  query,
+  orderBy,
   onSnapshot,
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
@@ -44,7 +45,8 @@ async function addComment(commentText) {
 // Fetch and display comments
 function fetchComments() {
   const commentsRef = collection(db, "comments");
-  onSnapshot(commentsRef, (snapshot) => {
+  const commentsQuery = query(commentsRef, orderBy("timestamp")); // Order by timestamp
+  onSnapshot(commentsQuery, (snapshot) => {
     commentsList.innerHTML = ""; // Clear previous comments
     snapshot.forEach((doc) => {
       const commentData = doc.data();
@@ -59,7 +61,7 @@ function fetchComments() {
 
       // Add the comment text and timestamp
       commentElement.innerHTML = `
-<p>${commentData.text}</p>
+        <p>${commentData.text}</p>
         <div class="comment-time">${formattedTime}</div>
       `;
 
@@ -68,13 +70,14 @@ function fetchComments() {
   });
 }
 
-// Function to format the timestamp to a readable format
-// Function to format the timestamp to a readable date (e.g., "Monday, Dec 8, 2024")
+// Function to format the timestamp to HH:MM
 function formatTimestamp(timestamp) {
-  const options = { year: "numeric", month: "short", day: "numeric" };
-  return timestamp.toLocaleDateString("en-US", options);
+  const hours = timestamp.getHours().toString().padStart(2, "0");
+  const minutes = timestamp.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
 }
 
+// Handle submit button click
 document.getElementById("sub").addEventListener("click", () => {
   const commentText = commentTextarea.value;
   if (commentText) {
