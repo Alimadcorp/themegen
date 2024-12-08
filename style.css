@@ -235,7 +235,7 @@ textarea {
   padding: 1rem;
   border-radius: 5px;
   resize: none;
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .feedback-container button {
