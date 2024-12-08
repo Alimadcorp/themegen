@@ -241,6 +241,7 @@ textarea {
   padding: 1rem;
   border-radius: 5px;
   resize: none;
+  width: 33%;
 }
 
 .feedback-container button {
