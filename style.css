@@ -262,7 +262,7 @@ textarea {
 }
 
 .comment-time {
-  font-size: 0.6rem;
+  font-size: 11px;
   color: #888;
 }
 .comment {
@@ -290,5 +290,5 @@ textarea {
 
 .comment p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 13px;
 }
