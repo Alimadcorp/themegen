@@ -199,6 +199,9 @@ center {
     z-index: 9999;
     max-height: 90%;
   }
+  textarea {
+  font-size: 1rem;
+  }
 }
 
 @media (orientation: portrait) {
@@ -217,6 +220,10 @@ center {
     z-index: 9999;
     max-height: 90%;
   }
+  
+textarea {
+  font-size: 5px;
+}
   #sub {
     margin: 1rem 0; /* Adjust spacing */
   }
@@ -235,7 +242,6 @@ textarea {
   padding: 1rem;
   border-radius: 5px;
   resize: none;
-  font-size: 14px;
 }
 
 .feedback-container button {
