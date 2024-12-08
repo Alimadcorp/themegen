@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: "Lexend Deca", sans-serif;
   background-image: linear-gradient(135deg, #ddd, #ccf);
