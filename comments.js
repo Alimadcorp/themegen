@@ -115,15 +115,12 @@ async function displayCommentsWithDelay() {
   }
 }
 
-// Event listener for the form submission
-feedbackForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+document.getElementById("sub").addEventListener("click", () => {
   const commentText = commentTextarea.value;
   if (commentText) {
     addComment(commentText);
-    commentTextarea.value = ""; // Clear the textarea
+    commentTextarea.value = "";
   }
 });
 
-// Fetch comments initially
 fetchComments();
